@@ -4,7 +4,7 @@
 This project contains a fork of [MUMmerGPU-2.0](http://sourceforge.net/apps/mediawiki/mummergpu/index.php?title=MUMmerGPU)
  that compiles out of the box.
 
-I've made several small changes to the code to get it to build, fixing the following messages:
+I've made several small changes to the existing MUMmerGPU code to get it to build, fixing the following messages:
 
 * `mummergpu.cu(468): error: argument of type "unsigned int *" is incompatible with parameter of type "size_t *"`
 * `mummergpu_gold.cpp:(.text+0x0): multiple definition of 'getRef(int, char*)'`
