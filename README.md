@@ -63,10 +63,10 @@ _At this point, continue with "installling locally" below._
     git clone git://github.com/rmtheis/mummergpu
     cd mummergpu/mummergpu-2.0/src
     make
-    export LD_LIBRARY_PATH=/usr/local/cuda/lib64
-    cd /root/mummergpu/mummergpu-2.0/bin/release
-    ./mummergpu
-    ./mummergpu ../../data/shortref.fa ../../data/shortqry.fa
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+    export PATH=$PATH:/root/mummergpu/mummergpu-2.0/bin/release
+    mummergpu
+    mummergpu ../../data/shortref.fa ../../data/shortqry.fa
 
 ##License
 
