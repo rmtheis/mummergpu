@@ -473,7 +473,7 @@ void boardMemory(size_t * free_mem, size_t * total_mem)
 void loadReferenceTexture(MatchContext* ctx)
 {
     Reference* ref = ctx->ref;
-    int numrows = ceil(ref->len / ((float)ref->pitch));
+    int numrows = static_cast<int>(ceil(ref->len / ((float)ref->pitch)));
     int blocksize = 4;
     numrows += blocksize;
     
@@ -1387,7 +1387,7 @@ void runPrintKernel(MatchContext* ctx,
     int blocksize = (numMatches > BLOCKSIZE) ? BLOCKSIZE : numMatches;
     
     dim3 dimBlock(blocksize, 1, 1);
-    dim3 dimGrid(ceil(numMatches / (float)BLOCKSIZE), 1, 1);
+    dim3 dimGrid(static_cast<int>(ceil(numMatches / (float)BLOCKSIZE)), 1, 1);
     
     fprintf(stderr, "  Calling print kernel... ");
     
@@ -1939,7 +1939,7 @@ void matchOnGPU(MatchContext* ctx, bool doRC)
 
 	dim3 dimBlock(blocksize, 1, 1);
 
-	dim3 dimGrid(ceil(numQueries / (float)BLOCKSIZE), 1, 1);
+	dim3 dimGrid(static_cast<int>(ceil(numQueries / (float)BLOCKSIZE)), 1, 1);
 	
 	// Match the reverse complement of the queries to the ref
     if (doRC) {
@@ -2128,7 +2128,7 @@ void initReferencePages( MatchContext* ctx , int* num_pages, ReferencePage** pag
     unsigned int bases_in_ref = ctx->full_ref_len - 3;
     unsigned int page_size = BASES_PER_TREE_PAGE < bases_in_ref ?
                              BASES_PER_TREE_PAGE : bases_in_ref;
-    unsigned int num_reference_pages = ceil((bases_in_ref + 0.0) / page_size);
+    unsigned int num_reference_pages = static_cast<int>(ceil((bases_in_ref + 0.0) / page_size));
     fprintf(stderr, "Stream will use %d pages for %d bases, page size = %d\n",
             num_reference_pages, bases_in_ref, page_size);
             
@@ -2139,7 +2139,7 @@ void initReferencePages( MatchContext* ctx , int* num_pages, ReferencePage** pag
     pages[0].begin = 1;
     pages[0].end = pages[0].begin +
                    page_size  +
-                   ceil(page_overlap / 2.0) + 1; //the 1 is for the 's' at the beginning
+                   static_cast<int>(ceil(page_overlap / 2.0)) + 1; //the 1 is for the 's' at the beginning
     pages[0].shadow_left = -1;
     pages[0].id = 0;
     
