@@ -30,7 +30,7 @@ Update the kernel:
     reboot
     uname -a
 
-Update the Nvidia driver (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads)):
+Update the Nvidia driver to v295.41 (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads)):
 
 (_Ignore the error saying_ `ERROR: File '/usr/lib64/xorg/modules/extensions/libglx.so' is not a symbolic link.`)
 
@@ -40,7 +40,7 @@ Update the Nvidia driver (or get a newer version from [here](http://developer.nv
     reboot
     /usr/bin/nvidia-smi -q -a
 
-Update the CUDA toolkit (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads), choosing Red Hat 5.5):
+Update the CUDA toolkit to v4.2.9 (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads), choosing Red Hat 5.5):
 
     wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_rhel5.5.run
     chmod +x cudatoolkit_4.2.9_linux_64_rhel5.5.run
