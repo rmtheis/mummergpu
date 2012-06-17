@@ -457,7 +457,7 @@ void buildReferenceTexture(Reference* ref,
 
 }
 
-void boardMemory(unsigned int * free_mem, unsigned int * total_mem)
+void boardMemory(size_t * free_mem, size_t * total_mem)
 {
   // The emulator doesn't allow calls to cuMemGetInfo
 
@@ -1070,12 +1070,12 @@ void loadResultBuffer(MatchContext* ctx)
 	fprintf(stderr, "Allocating result array for %d queries (%d bytes) ...", 
 			numQueries, numCoords*sizeof(MatchCoord) );
 	
-    unsigned int boardFreeMemory = 0;
-    unsigned int total_mem = 0;
+    size_t boardFreeMemory = 0;
+    size_t total_mem = 0;
 
 	boardMemory(&boardFreeMemory, &total_mem);
 
-   fprintf(stderr,"board free memory: %u total memory: %u\n", 
+   fprintf(stderr,"board free memory: %lu total memory: %lu\n", 
           boardFreeMemory, total_mem);
 	
     ctx->results.h_match_coords = (MatchCoord*) calloc( numCoords, sizeof(MatchCoord));
@@ -1508,13 +1508,13 @@ void getExactAlignments(MatchContext * ctx, ReferencePage * page, bool on_cpu)
 {
     assert(!ctx->reverse && !ctx->forwardreverse);
     
-    unsigned int boardFreeMemory;
-    unsigned int total_mem;
+    size_t boardFreeMemory;
+    size_t total_mem;
 
     if (!on_cpu)
 	{
 		boardMemory(&boardFreeMemory, &total_mem);
-		fprintf(stderr, "board free memory: %u total memory: %u\n", 
+		fprintf(stderr, "board free memory: %lu total memory: %lu\n", 
 		boardFreeMemory, total_mem);
 	}
 	else
@@ -1528,7 +1528,7 @@ void getExactAlignments(MatchContext * ctx, ReferencePage * page, bool on_cpu)
 #endif
     
 	boardFreeMemory -= BREATHING_ROOM;
-    fprintf(stderr, "board free memory: %u\n", boardFreeMemory);
+    fprintf(stderr, "board free memory: %lu\n", boardFreeMemory);
     
     int rTotalMatches = 0;
     int rTotalAlignments = 0;
@@ -2070,10 +2070,10 @@ int matchSubset(MatchContext* ctx,
     return 0;
 }
 
-int getFreeDeviceMemory(bool on_cpu)
+size_t getFreeDeviceMemory(bool on_cpu)
 {
-	unsigned int free_mem = 0;
-	unsigned int total_mem = 0;
+	size_t free_mem = 0;
+	size_t total_mem = 0;
 	
 	// We have to 'prime' CUDA by making an allocation here.  cuMemGetInfo 
 	// will return zeroes until we do a malloc.
@@ -2083,7 +2083,7 @@ int getFreeDeviceMemory(bool on_cpu)
 	if (!on_cpu) {
 
         boardMemory(&free_mem, &total_mem);
-		fprintf(stderr, "board free memory: %u total memory: %u\n", 
+		fprintf(stderr, "board free memory: %lu total memory: %lu\n", 
 		free_mem, total_mem);
     }
     else {
@@ -2097,9 +2097,9 @@ int matchQueriesToReferencePage(MatchContext* ctx, ReferencePage* page)
 {
 	fprintf(stderr, "Beginning reference page %p\n", page);
    	
-	int free_mem = getFreeDeviceMemory(ctx->on_cpu);
+	size_t free_mem = getFreeDeviceMemory(ctx->on_cpu);
 	
-	int available_mem = free_mem - page->ref.bytes_on_board - BREATHING_ROOM;
+	size_t available_mem = free_mem - page->ref.bytes_on_board - BREATHING_ROOM;
 	ctx->ref = &(page->ref);
     loadReference(ctx);
 
@@ -2246,6 +2246,3 @@ int matchQueries(MatchContext* ctx) {
     
     return ret;
 }
-
-
-
