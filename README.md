@@ -1,4 +1,4 @@
-#MUMmerGPU
+#mummergpu
 * * *
 
 This project contains a fork of [MUMmerGPU-2.0](http://sourceforge.net/apps/mediawiki/mummergpu/index.php?title=MUMmerGPU)
@@ -32,7 +32,7 @@ Update the kernel:
 
 Update the Nvidia driver (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads)):
 
-(Ignore the error saying `ERROR: File '/usr/lib64/xorg/modules/extensions/libglx.so' is not a symbolic link.`)
+(_Ignore the error saying_ `ERROR: File '/usr/lib64/xorg/modules/extensions/libglx.so' is not a symbolic link.`)
 
     wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/drivers/devdriver_4.2_linux_64_295.41.run
     chmod +x devdriver_4.2_linux_64_295.41.run
@@ -52,11 +52,14 @@ Install git:
     rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm
     yum install --enablerepo=webtatic --disableexcludes=main git-all
 
-At this point, continue with "installling locally" below.
+Install g++:
+
+    yum install gcc-c++
+
+_At this point, continue with "installling locally" below._
 
 ##Installing Locally
 
-    yum install gcc-c++
     git clone git://github.com/rmtheis/mummergpu
     cd mummergpu/mummergpu-2.0/src
     make
@@ -67,4 +70,4 @@ At this point, continue with "installling locally" below.
 
 ##License
 
-[Artistic License](https://github.com/rmtheis/mummergpu/blob/master/mummergpu-2.0/COPYING)
+[Artistic License 1.0](https://github.com/rmtheis/mummergpu/blob/master/mummergpu-2.0/COPYING)
