@@ -2,6 +2,7 @@
 #include <fstream>
 #include <stdio.h>
 #include <cmath>
+#include <cstring>
 #include <sys/time.h>
 #include <list>
 #include <map>
