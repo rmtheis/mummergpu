@@ -43,9 +43,9 @@
 #endif
 
 #if REFTEX
-#define GETRCHAR(refpos) getRef(refpos)
+#define GETRCHAR(refpos) getRef_(refpos)
 #else
-#define GETRCHAR(refpos) getRef(refpos, ref)
+#define GETRCHAR(refpos) getRef_(refpos, ref)
 #endif
 
 
@@ -303,7 +303,7 @@ __device__ void arrayToAddress(uchar3 arr, unsigned int& addr)
 /// getRef
 //////////////////////////////////
 
-__device__ char getRef(int refpos
+__device__ char getRef_(int refpos
 #if !REFTEX
 					   ,char* ref
 #endif
@@ -992,7 +992,7 @@ mummergpuRCKernel(MatchCoord* match_coords,
 
 		 while (refpos <= MKI(node.end) && c != '\0')
 		 { 
-            char r = getRef(refpos
+            char r = getRef_(refpos
 #if !REFTEX
 							//FIXME: this needs to be a pointer to ref->d_ref_array
 							,NULL
