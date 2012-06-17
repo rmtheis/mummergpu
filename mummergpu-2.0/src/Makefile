@@ -35,7 +35,7 @@ ROOTOBJDIR ?= $(ROOTDIR)/obj
 LIBDIR     := $(ROOTDIR)/lib
 BINNAME    ?= mummergpu
 INCLUDES  += -I. -I$(CUDA_INSTALL_PATH)/include 
-LIB       := -L$(CUDA_INSTALL_PATH)/lib -L$(LIBDIR) -lcudart -lcuda ${LIB}
+LIB       := -L$(CUDA_INSTALL_PATH)/lib64 -L$(LIBDIR) -lcudart -lcuda ${LIB}
 
 # Warning flags
 CXXWARN_FLAGS := \
