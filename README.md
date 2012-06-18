@@ -1,10 +1,16 @@
 #mummergpu
 * * *
 
-This project contains a fork of [MUMmerGPU-2.0](http://sourceforge.net/apps/mediawiki/mummergpu/index.php?title=MUMmerGPU)
- that compiles out of the box.
+This project contains a fork of [MUMmerGPU-2.0](http://sourceforge.net/apps/mediawiki/mummergpu/index.php?title=MUMmerGPU) that compiles out of the box.
 
-I've made several small changes to the existing MUMmerGPU code to get it to build, fixing the following messages:
+MUMMerGPU-2.0 is an excellent open source GPU-based pairwise sequence alignment program. It was last updated in 2010. 
+Currently, compilation errors prevent the MUMmerGPU-2.0 source code distribution from being immediately compiled and 
+run on 64-bit Linux systems using current C++ compilers.
+
+This project contains a slightly modified copy of MUMMerGPU-2.0 that compiles correctly using g++ without requiring 
+further changes to the source code.
+
+This project avoids the following messages:
 
 * `mummergpu.cu(468): error: argument of type "unsigned int *" is incompatible with parameter of type "size_t *"`
 * `mummergpu_gold.cpp:(.text+0x0): multiple definition of 'getRef(int, char*)'`
@@ -14,11 +20,11 @@ I've made several small changes to the existing MUMmerGPU code to get it to buil
 * `PoolMalloc.cpp:94:7: error: stderr was not declared in this scope`...
 * `mummergpu.cu:478: warning: converting to int from float`...
 
-All my changes can be viewed in the [commit history](https://github.com/rmtheis/mummergpu/commits/master).
+All of my modifications can be viewed in the [commit history](https://github.com/rmtheis/mummergpu/commits/master).
 
 ## Installing on Amazon EC2
 
-Launch instance ami-aa30c7c3 (amazon/EC2 CentOS 5.5 GPU HVM AMI) using instance Cluster GPU cg1.4xlarge, 22GB ($2.10/hr).
+Launch instance ami-aa30c7c3 (CentOS 5.5 GPU HVM AMI) using instance Cluster GPU cg1.4xlarge, 22GB ($2.10/hr).
 
 Connect to your instance:
 
@@ -40,7 +46,7 @@ Update the Nvidia driver to v295.41 (or get a newer version from [here](http://d
     reboot
     /usr/bin/nvidia-smi -q -a
 
-Update the CUDA toolkit to v4.2.9 (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads), choosing Red Hat 5.5):
+Update the CUDA Toolkit to v4.2.9 (or get a newer version from [here](http://developer.nvidia.com/cuda-downloads) for Red Hat 5.5):
 
     wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_rhel5.5.run
     chmod +x cudatoolkit_4.2.9_linux_64_rhel5.5.run
@@ -56,9 +62,9 @@ Install g++:
 
     yum install gcc-c++
 
-_At this point, continue with "installling locally" below._
+_At this point, continue with "Installling Locally" below._
 
-##Installing Locally
+## Installing Locally
 
     git clone git://github.com/rmtheis/mummergpu
     cd mummergpu/mummergpu-2.0/src
@@ -68,6 +74,6 @@ _At this point, continue with "installling locally" below._
     mummergpu
     mummergpu ../../data/shortref.fa ../../data/shortqry.fa
 
-##License
+## License
 
 [Artistic License 1.0](https://github.com/rmtheis/mummergpu/blob/master/mummergpu-2.0/COPYING)
