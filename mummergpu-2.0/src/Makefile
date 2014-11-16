@@ -40,7 +40,6 @@ LIB       := -L$(CUDA_INSTALL_PATH)/lib64 -L$(LIBDIR) -lcudart -lcuda ${LIB}
 # Warning flags
 CXXWARN_FLAGS := \
 	-W -Wall \
-	-Wimplicit \
 	-Wswitch \
 	-Wformat \
 	-Wchar-subscripts \

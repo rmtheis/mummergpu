@@ -251,7 +251,7 @@ __device__ int addr2id(unsigned int addr)
 #endif
 }
 
- __device__ TextureAddress id2addr(int id)
+__device__ TextureAddress id2addr(int id)
  {
      TextureAddress retval;
  

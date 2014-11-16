@@ -1206,7 +1206,6 @@ void buildNodeTexture(SuffixNode * node,
 
   unsigned char arr[3];
   writeAddress(arr, myaddress);
-  TextureAddress newaddr = arrayToAddress(arr);
 
   TextureAddress parent(id2addr(node->m_parent->id()));
   writeAddress(nd->parent, parent);
@@ -2102,7 +2101,7 @@ char output_buf[output_buf_limit];
 //FIXME: needs to be reinitialized to zero at the beginning of each round of printing.
 size_t bytes_written = 0;
 
-int addToBuffer(char* string)
+int addToBuffer(const char* string)
 {
 	 size_t buf_length = strlen(string);
 	 
