@@ -387,7 +387,7 @@ void buildReferenceTexture(Reference* ref,
 	
  	ref->bytes_on_board = (width * node_height * sizeof(PixelOfNode)) + 
                           (width * children_height * sizeof(PixelOfChildren));
-	fprintf(stderr, "This tree will need %d bytes on the board\n", ref->bytes_on_board);
+	fprintf(stderr, "This tree will need %zu bytes on the board\n", ref->bytes_on_board);
 
 #if REORDER_REF
     char * reordertimer = createTimer();
@@ -450,7 +450,7 @@ void buildReferenceTexture(Reference* ref,
     	statistics->t_reorder_ref_str += getTimerValue(reordertimer);
     deleteTimer(reordertimer);
 #else
-    fprintf(stderr, "The refstr requires %d bytes\n", ref->len);
+    fprintf(stderr, "The refstr requires %zu bytes\n", ref->len);
 	ref->bytes_on_board += ref->len;
 #endif
 
@@ -1067,7 +1067,7 @@ void loadResultBuffer(MatchContext* ctx)
     deleteTimer(offsettimer);
 
 	unsigned int numCoords = ctx->results.numCoords;
-	fprintf(stderr, "Allocating result array for %d queries (%d bytes) ...", 
+	fprintf(stderr, "Allocating result array for %d queries (%zu bytes) ...", 
 			numQueries, numCoords*sizeof(MatchCoord) );
 	
     size_t boardFreeMemory = 0;
@@ -1332,7 +1332,7 @@ void coordsToPrintBuffers(MatchContext* ctx,
     *matches = M;
 	*nextqry = qry;
 	*nextqrychar = qrychar;
-	fprintf(stderr, "Allocing %d bytes of host memory for %d alignments\n",  alignmentOffset * sizeof(Alignment), numAlignments);
+	fprintf(stderr, "Allocing %zu bytes of host memory for %d alignments\n",  alignmentOffset * sizeof(Alignment), numAlignments);
     *alignments = (struct Alignment *) calloc(alignmentOffset, sizeof(Alignment));
 	//cudaMallocHost((void**)alignments, numAlignments * sizeof(Alignment));
 }
@@ -1359,7 +1359,7 @@ void runPrintKernel(MatchContext* ctx,
     startTimer(atimer);
     // Copy matches to card
     fprintf(stderr, "prepared %d matches %d alignments\n", numMatches, numAlignments);
-	fprintf(stderr, "Copying %d bytes to host memory for %d alignments\n",  numAlignments * sizeof(Alignment), numAlignments);
+	fprintf(stderr, "Copying %zu bytes to host memory for %d alignments\n",  numAlignments * sizeof(Alignment), numAlignments);
 
     int DEBUG = 0;
     if (DEBUG)
@@ -2007,7 +2007,7 @@ void matchQueryBlockToReferencePage(MatchContext* ctx,
 {
 	char*  ktimer = createTimer();
 	
-    fprintf(stderr, "Memory footprint is:\n\tqueries: %d\n\tref: %d\n\tresults: %d\n",
+    fprintf(stderr, "Memory footprint is:\n\tqueries: %zu\n\tref: %zu\n\tresults: %zu\n",
             ctx->queries->bytes_on_board,
             ctx->ref->bytes_on_board,
             ctx->results.bytes_on_board);
