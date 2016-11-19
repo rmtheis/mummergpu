@@ -1,7 +1,6 @@
 #mummergpu
-* * *
 
-This project contains a fork of [MUMmerGPU-2.0](http://sourceforge.net/apps/mediawiki/mummergpu/index.php?title=MUMmerGPU) that compiles out of the box.
+This project contains a fork of [MUMmerGPU-2.0](https://sourceforge.net/p/mummergpu/wiki/MUMmerGPU/) that compiles out of the box.
 
 MUMMerGPU-2.0 is an excellent open source GPU-based pairwise sequence alignment program. It was last updated in 2010. 
 Currently, compilation errors prevent the MUMmerGPU-2.0 source code distribution from being immediately compiled and 
@@ -22,9 +21,13 @@ This project avoids the following messages:
 
 All of my modifications can be viewed in the [commit history](https://github.com/rmtheis/mummergpu/commits/master).
 
+## Original Readme
+
+See [mummergpu-2.0/README](mummergpu-2.0/README).
+
 ## Installing on Amazon EC2
 
-Launch instance ami-aa30c7c3 (CentOS 5.5 GPU HVM AMI) using instance Cluster GPU cg1.4xlarge, 22GB ($2.10/hr).
+Launch instance ami-aa30c7c3 (CentOS 5.5 GPU HVM AMI) using instance Cluster GPU cg1.4xlarge, 22GB.
 
 Connect to your instance:
 
@@ -76,4 +79,4 @@ _At this point, continue with "Installling Locally" below._
 
 ## License
 
-[Artistic License 1.0](https://github.com/rmtheis/mummergpu/blob/master/mummergpu-2.0/COPYING)
+[Artistic License 1.0](COPYING)
