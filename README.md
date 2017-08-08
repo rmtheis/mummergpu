@@ -1,4 +1,4 @@
-#mummergpu
+# mummergpu
 
 This project contains a fork of [MUMmerGPU-2.0](https://sourceforge.net/p/mummergpu/wiki/MUMmerGPU/) that compiles out of the box.
 
